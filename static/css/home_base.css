@@ -1,0 +1,398 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+* {
+    font-family: "Roboto", sans-serif;
+}
+
+.main {
+    max-width: 1440px;
+    min-height: 100vh;
+    margin: 0 auto;
+    border-radius: 30px;
+    border: 1px solid rgb(238, 238, 238);
+    padding: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.container {
+    display: flex;
+}
+
+.container .postListContainer {
+    width: 80%;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    .container .postListContainer {
+        padding-top: 50px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .container .postListContainer {
+        width: 100%;
+    }
+}
+
+.menu {
+    min-width: 20%;
+}
+.menu ul {
+    list-style-type: none;
+}
+.menu ul li {
+    margin-bottom: 15px;
+}
+.menu ul li a {
+    font-size: 16px;
+    transition: 0.15s;
+    color: rgba(0, 0, 0, 0.6);
+    text-decoration: none;
+}
+.menu ul li a:hover {
+    color: rgba(0, 0, 0, 0.9);
+}
+.popular {
+    display: flex;
+    align-items: center;
+}
+.popular img {
+    width: 21px;
+    margin-left: 10px;
+}
+
+.header {
+    margin-bottom: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.logo span {
+    font-size: 45px;
+}
+
+.user {
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.user .avatar {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.user .userInfo {
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+.user .logout {
+    cursor: pointer;
+    height: 21px;
+    width: 21px;
+    margin: 0px 30px 0px 10px;
+    text-decoration: none;
+    color: black;
+}
+
+@media screen and (max-width: 576px) {
+    .user {
+        align-items: flex-end;
+    }
+}
+
+.postForm {
+    height: auto;
+    width: 60%;
+    margin-bottom: 70px;
+    display: flex;
+    flex-direction: column;
+}
+
+.postForm .postTitle {
+    margin-bottom: 20px;
+    border: 1px solid rgb(238, 238, 238);
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.postForm .postBody {
+    height: auto;
+    border: 1px solid rgb(238, 238, 238);
+    border-radius: 3px;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.postForm button {
+    cursor: pointer;
+    height: 40px;
+    color: #fff;
+    background-color: black;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 576px) {
+    .postForm {
+        width: 100%;
+    }
+}
+
+.mainList {
+    min-width: 80%;
+}
+
+.plusContainer {
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.plusContainer .plus {
+    cursor: pointer;
+    width: 37px;
+    height: 37px;
+    border-radius: 50%;
+    border: 1px solid black;
+    transition: 0.2s;
+    position: relative;
+}
+
+.plusContainer .plus .plus1 {
+    height: 1px;
+    width: 15px;
+    background-color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.plusContainer .plus .plus2 {
+    height: 15px;
+    width: 1px;
+    background-color: black;
+    transform: rotateY("90");
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.plusContainer .plus:hover {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.plusContainer .plus:hover .plus1 {
+    height: 2px;
+    transform: rotateY("30");
+}
+
+.plusContainer .plus:hover .plus2 {
+    width: 2px;
+    transform: rotateY("120");
+}
+
+.plusContainer h3 {
+    font-weight: 300;
+    font-size: 17px;
+    padding-left: 20px;
+}
+
+@media screen and (max-width: 576px) {
+    .main {
+        min-width: 100%;
+    }
+    .plusContainer .plus {
+        width: 27px;
+        height: 27px;
+    }
+    .plusContainer .plus .plus1 {
+        height: 0.5px;
+        width: 10px;
+    }
+    .plusContainer .plus .plus2 {
+        height: 10px;
+        width: 0.5px;
+    }
+}
+
+.post_wrapper {
+    width: 80%;
+    margin-bottom: 50px;
+}
+
+.post_wrapper .post_header {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.post_wrapper .post_header .post_avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.post_wrapper .post_header .post_author {
+    word-wrap: break-word;
+    margin: 0px 10px;
+}
+
+.post_wrapper .post_header .post_title {
+    font-size: 27px;
+}
+
+.post_wrapper .body p {
+    word-wrap: break-word;
+}
+
+.post_wrapper .bottom {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.post_wrapper .bottom .date {
+    opacity: 0.6;
+}
+
+.post_wrapper .bottom .LikesChatContainer .likesConteiner {
+    display: flex;
+}
+
+.post_wrapper .bottom .LikesChatContainer .likesConteiner p {
+    cursor: default;
+    margin-right: 10px;
+}
+
+.post_wrapper .bottom .LikesChatContainer .likesConteiner .likes {
+    cursor: pointer;
+    width: 21px;
+}
+
+.post_wrapper .bottom .LikesChatContainer .comments {
+    cursor: pointer;
+    width: 21px;
+    margin-left: 10px;
+}
+
+@media screen and (max-width: 992px) {
+    .post_wrapper {
+        width: 100%;
+    }
+    .post_wrapper .post_header .post_title {
+        font-size: 17px;
+    }
+    .post_wrapper .post_body {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .post_wrapper {
+        width: 100%;
+    }
+}
+
+.comments_form {
+    height: auto;
+    width: 80%;
+    margin-bottom: 70px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.comments_form .comments_body {
+    min-height: 40px;
+    width: 80%;
+    word-wrap: break-word;
+    border: 1px solid rgb(238, 238, 238);
+    border-radius: 3px;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.comments_form button {
+    cursor: pointer;
+    height: 40px;
+    color: #fff;
+    background-color: black;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 556px) {
+    .comments_form {
+        width: 100%;
+    }
+
+    .comments_form button {
+        font-size: 12px;
+    }
+}
+
+.comment_wrapper {
+    min-width: 100%;
+    margin-bottom: 50px;
+    padding-left: 30px;
+}
+
+.comment_wrapper .comment_header {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.comment_wrapper .comment_header .comment_avatar {
+    width: 40px;
+    height: 40px;
+}
+
+.comment_wrapper .comment_header .comment_author {
+    word-wrap: break-word;
+    margin: 0px 10px;
+}
+
+.comment_wrapper .comment_body {
+    line-height: 1.5;
+}
+
+.comment_wrapper .comment_bottom {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.comment_wrapper .comment_bottom .comment_date {
+    opacity: 0.6;
+}
+
+.comment_wrapper .comment_bottom .comment_likes {
+    cursor: pointer;
+    width: 21px;
+}
+
+@media screen and (max-width: 556px) {
+    .comment_wrapper {
+        width: 100%;
+    }
+
+    .comment_wrapper .comment_bottom button {
+        font-size: 12px;
+    }
+}

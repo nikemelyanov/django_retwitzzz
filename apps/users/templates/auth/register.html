@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block styles %}
+  <link href="{% static 'css/auth/index.css' %}" rel="stylesheet" />
+{% endblock styles %}
+{% block content %}
+  <div class="main">
+      <h1 class="logo"><span>RE</span>TWITTz</h1>
+      <form class="form" action="{% url 'users:register' %}" method="post">
+          {% csrf_token %} 
+          {{ form.first_name }} 
+          {{ form.last_name }} 
+          {{ form.username }} 
+          {{ form.email }} 
+          {{ form.password1 }} 
+          {{ form.password2 }}
+          <input class="button" type="submit" value="Зарегистрироваться" />
+          <a class="link" href="{% url 'users:login' %}">уже есть аккаунт?</a>
+      </form>
+  </div>
+{% endblock content %}

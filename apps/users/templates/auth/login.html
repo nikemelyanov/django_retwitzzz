@@ -1,0 +1,18 @@
+{% extends "base.html" %} 
+{% load static %} 
+{% block styles %}
+    <link href="{% static 'css/auth/index.css' %}" rel="stylesheet" />
+{% endblock styles %} 
+{% block content %}
+    <div class="main">
+        <h1 class="logo"><span>RE</span>TWITTz</h1>
+        <form class="form" action="{% url 'users:login' %}" method="post">
+            {% csrf_token %}
+            {{ form.username }}
+            {{ form.password }}
+            <input class="button" type="submit" value="Авторизоваться"/>
+            <a class="link" href="{% url 'users:register' %}">нет аккаунта?</a>
+        </form>
+    </div>
+{% endblock content %}
+

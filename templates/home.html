@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home page</title>
+        <link href="{% static 'css/home_base.css' %}" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="main">
+            <div class="header">
+                <h1 class="logo"><span>RE</span>TWITTz</h1>
+
+                {% if user.is_authenticated %}
+                    <div class="user">
+                        <img class="avatar" src="{% if user.image %} {{ user.image.url }} {% else %} '' {% endif %}" alt="avatar img" />
+                        <div class="userInfo">
+                            {{ user.first_name }} {{ user.last_name }}
+                        </div>
+                        <a class="logout" href="{% url 'users:logout' %}">
+                            Выйти
+                        </a>
+                    </div>
+                {% else %}
+                    <div class="user">
+                        <a class="logout" href="{% url 'users:login' %}">
+                            Войти
+                        </a>
+                    </div>
+                {% endif %}
+                
+            </div>
+            <div class="container">
+                <div class="menu">
+                    <ul>
+                        <li class="popular">
+                            <a href="#">Популярные</a>
+                            <img src="#" alt="" />
+                        </li>
+                        <li>
+                            <a href="#">Ваши ретвитсы</a>
+                            <img />
+                        </li>
+                        <li>
+                            <a href="#">Вам понравились</a>
+                        </li>
+                        <li>
+                            <a href="#">Друзья</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="postListContainer">
+                    <div class="mainList">
+                        {% if user.is_authenticated %}
+                        <div class="plusContainer">
+                            <div class="plus">
+                                <div class="plus1"></div>
+                                <div class="plus2"></div>
+                            </div>
+                            <h3>Расскажите миру что-то новое</h3>
+                        </div>
+                    
+                        <form class="postForm" action="{% url 'posts:add_post' %}" method="post">
+                            {% csrf_token %}
+                            <input class="postTitle" name="title" type="text" placeholder="Заголовок" />
+                            <input class="postBody" name="body" type="text" />
+                            <button type="submit">опубликовать</button>
+                        </form>
+                        {% else %}
+                        <div class="plusContainer" onclick="window.location.href='{% url "users:login" %}'">
+                            <div class="plus">
+                                <div class="plus1"></div>
+                                <div class="plus2"></div>
+                            </div>
+                            <h3>авторизоваться и рассказать миру что-то новое</h3>
+                        </div>
+                        {% endif %}
+                    
+                        {% for post in posts  %}
+                            <div class="post_wrapper">
+                                <div class="post_header">
+                                    <img class="post_avatar" src="{{ post.user.image.url }}" alt="" />
+                                    <p class="post_author">{{ post.user.first_name }}</p>
+                                    <h1 class="post_title">{{ post.title }}</h1>
+                                </div>
+                                <div class="body">
+                                    <p>{{ post.body }}</p>
+                                </div>
+                                <div class="bottom">
+                                    <div class="date">{{ post.created_timestamp }}</div>
+                                    <div class="LikesChatContainer">
+                                        {% comment %} <div class="likesConteiner">
+                                            <p>likes</p>
+                                            <img class="likes" src="#" alt="" />
+                                        </div> {% endcomment %}
+                                        <button>comments</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <form class="comments_form"> 
+                                <input
+                                  class="comments_body"
+                                  type="text"
+                                />
+                                <button type="submit">опубликовать</button>
+                            </form>
+                            {% for comment in post.comments.all %}
+                                <div class="comment_wrapper">
+                                    <div class="comment_header">
+                                    <img
+                                        class="comment_avatar"
+                                        src="{{ comment.user.image.url }}"
+                                        alt="user"
+                                    />
+                                    <p class="comment_author">{{ comment.user.first_name }}</p>
+                                    </div>
+                                    <p class="comment_body">{{ comment.body }}</p>
+                                    <div class="comment_bottom">
+                                    <div class="comment_date">{{ comment.created_timestamp }}</div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
